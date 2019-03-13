@@ -1,0 +1,353 @@
+//App Styles
+.app{
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+
+//Navbar Styles
+.navbarPublic{
+  background: $light;
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  &__menu{
+    img{
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 2px 2px 2px;
+      &:hover{
+        background: $primary;
+      }
+    }
+  }
+  &__logo{
+    align-self: center;
+    img{
+      width: 10rem;
+      height: 3rem;
+      object-fit: cover;
+    }
+  }
+  &__settings{
+    img{
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 2px;
+      &:hover{
+        background: $primary;
+      }
+    }
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+
+.navbar{
+  background: $light;
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  &__menu{
+    img{
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 2px 2px 2px;
+      &:hover{
+        background: $primary;
+      }
+    }
+  }
+  &__logo{
+    align-self: center;
+    img{
+      width: 10rem;
+      height: 3rem;
+      object-fit: cover;
+    }
+  }
+  &__settings{
+    img{
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 2px;
+      &:hover{
+        background: $primary;
+      }
+    }
+  }
+}
+.menuPublic{
+  background: $backGrey;
+  border: 3px solid $primary;
+  border-radius: 0 4px 4px 4px;
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  animation: moveInLeft 0.3s ease-in-out;
+  transition: all;
+    &__title{
+      align-self: center;
+    }
+    &__list{
+      list-style-type: none;
+      margin: 1rem;
+      a{
+        text-decoration: none;
+        color: $dark;
+      }
+      li{
+        background: $light;
+        border: 1px solid $dark;
+        border-radius: 4px;
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+    }
+    @media(min-width: 768px){
+    }
+    @media(min-width: 1440px){
+    }
+  }
+@keyframes moveInLeft {
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  background: $backBlue;
+  &__hero{
+    margin: 0 1rem;
+    height: 8rem;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid $dark;
+      border-radius: 4px;
+    }
+  }
+  &__slogan{
+    margin-top: 80px;
+    padding: 1rem 0;
+    align-self: center;
+    h2{
+      font-size: 1.7rem;
+      text-align: center;
+    }
+  }
+  &__what{
+    padding: 1rem;
+    h2{
+      text-align: center;
+    }
+    h4{
+      padding: 0.5rem 0;
+    }
+    h3{
+      padding-top: 1rem;
+      text-align: center;
+    }
+    ul{
+      padding: 0 1.5rem;
+    }
+    li{
+      list-style-type: circle;
+    }
+  }
+  &__network{
+    margin: 0 1rem;
+    height: 8rem;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid $dark;
+      border-radius: 4px;
+    }
+  }
+  &__how{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    p{
+      text-align: center;
+    }
+    button{
+      margin-top: 1rem;
+      background: $primary;
+      color: $dark;
+      border: 2px solid $dark;
+      border-radius: 8px;
+      height: 2rem;
+      width: 10rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+.features{
+  display: flex;
+  flex-direction: column;
+  background: $backBlue;
+  &__title{
+    margin-top: 80px;
+    align-self: center;
+    padding: 0 1rem;
+  }
+  &__list{
+    padding-bottom: 1rem;
+  }
+  &__easy{
+    padding: 1rem 1rem 0 1rem;
+  }
+  &__targeted{
+    padding: 1rem 1rem 0 1rem;
+  }
+  &__instant{
+    padding: 1rem 1rem 0 1rem;
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+.about{
+  display: flex;
+  flex-direction: column;
+  background: $backBlue;
+  &__title{
+    margin-top: 80px;
+    align-self: center;
+    padding: 0 1rem;
+  }
+  &__story{
+    padding: 1rem 1rem 0 1rem;
+    p{
+      margin: 0.5rem 0;
+    }
+  }
+  &__meet{
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    &--card{
+      margin: 1rem 0;
+      align-self: center;
+      img{
+        height: 10rem;
+      }
+    }
+  }
+  &__contact{
+    padding: 1rem;
+    &--card{
+      margin: 0.5rem 0;
+      li{
+        margin: 0.5rem;
+        list-style-type: none;
+      }
+    }
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+.bridge{
+  display: flex;
+  flex-direction: column;
+  background: $backBlue;
+  position: relative;
+  &__slogan{
+    margin-top: 80px;
+    padding: 1rem;
+    align-self: center;
+  }
+  &__hero{
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  margin: 2rem 1rem;
+  button{
+    background: $primary;
+    color: $dark;
+    border: 2px solid $dark;
+    border-radius: 8px;
+    height: 2rem;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+
+
+
+.footer{
+  background: $backBlack;
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+  position: relative;
+  h3{
+    text-align: center;
+  }
+  h5{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+
+//Default Component Styles
+// .name{
+//   @media(min-width: 768px){
+//   }
+//   @media(min-width: 1440px){
+//   }
+// }

@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+//Variable Declarations
+  //Page Widths
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1440px;
+  //Page Pads
+$mobilePad: 1rem;
+$tabletPad: 1.5rem;
+$desktopPad: 11.25rem;
+  //Color Pallete
+$black: #000000;
+$white: #FFFFFF;
+$textBlack: #323232;
+$textWhite: #FAFAFA;
+$backWhite: #F0F0F0;
+$backBlue: #e9f1f7;
+$backGrey: #AFAFAF;
+$backBlack: #626262;
+$primary: #349FFF;
+$secondary: #154FBB;
+$tertiary: #8080FF;
+$light: #9FB8DE;
+$dark: #21386E;
+
+
+//Mixins
+@mixin general-pad{
+  padding: 2vw 2vw 0vw ;
+  @media (min-width: $tablet ) { 
+  padding: 3vw 3vw 0vw;
+  }
+  @media (min-width: $desktop ) { 
+  padding: 3vw 9.5vw;
+  }
+}
+
+ @import 'app.scss';
