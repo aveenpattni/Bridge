@@ -6,6 +6,7 @@ export default class Profile extends Component {
     return (
       <div className="profile">
         <NavBar />
+        <h1>Profile</h1>
       </div>
     )
   }
