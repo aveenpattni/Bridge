@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import NavBar from './NavBar';
 import Footer from '../Footer';
 
 export default class Features extends Component {
   render() {
     return (
       <div className="features">
-        {/* <NavBar page="features"/> */}
         <div className="features__title">
           <h1>Key Features</h1>
         </div>
@@ -23,6 +21,9 @@ export default class Features extends Component {
             <h3>Instant Messaging</h3>
             <p>Communicate instantly with your connections. <em>Bridge</em> offers an instant messaging portal for quick communication between connections.</p>
           </div>
+        </div>
+        <div className="features__hero">
+          <img src="./Assets/Images/akshay.jpg" alt="hero"/>
         </div>
         <Footer />
       </div>

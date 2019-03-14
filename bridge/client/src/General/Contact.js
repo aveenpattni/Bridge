@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
-import NavBar from './NavBar';
 import Footer from '../Footer';
 
-export default class About extends Component {
+export default class Contact extends Component {
   render() {
     return (
-      <div className="about">
-        {/* <NavBar page="about"/> */}
-        <div className="about__title">
-          <h1>About</h1>
+      <div className="contact">
+        <div className="contact__title">
+          <h1>Contact</h1>
         </div>
-        <div className="about__story">
+        <div className="contact__contact">
+          <h3>Contact Us</h3>
+          <div className="contact__contact--card">
+            <ul>
+              <li>Phone: (647) 462-3312</li>
+              <li>Email: <a href="mailto:avpattni@edu.uwaterloo.ca">avpattni@edu.uwaterloo.ca</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="contact__story">
           <h3>Our Story</h3>
           <p>
             Often young students don’t know how or are too scared to make initial 
@@ -31,21 +38,12 @@ export default class About extends Component {
             and advice to foster the growth of their students.
           </p>
         </div>
-        <div className="about__meet">
+        <div className="contact__meet">
           <h3>Meet Our Team</h3>
-          <div className="about__meet--card">
-            <img src="./Assets/Images/aveen.jpg"/>
+          <div className="contact__meet--card">
+            <img src="./Assets/Images/aveen.jpg"  alt="Aveen Pattni"/>
             <h5>Aveen Pattni</h5>
             <h6>Founder and CEO</h6>
-          </div>
-        </div>
-        <div className="about__contact">
-          <h3>Contact Us</h3>
-          <div className="about__contact--card">
-            <ul>
-              <li>Phone: (647) 462-3312</li>
-              <li>Email: <a href="mailto:avpattni@edu.uwaterloo.ca">avpattni@edu.uwaterloo.ca</a></li>
-            </ul>
           </div>
         </div>
         <Footer />

@@ -23,13 +23,13 @@ export default class NavBar extends Component {
       <nav className="navbarPublic">
         {this.state.menuVisible ? <Menu toggle={this.toggleMenu}/> : <></>}      
         <div className="navbarPublic__menu" onClick={this.toggleMenu}>
-          <img src="./Assets/menu.svg" />
+          <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
         <div className="navbarPublic__logo">
-          <Link to="/home" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png" /></Link>
+          <Link to="/home" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
         <div className="navbarPublic__settings">
-          <Link to="/bridge"><img src="./Assets/login.svg"/></Link>
+          <Link to="/connect"><img src="./Assets/login.svg"  alt="login"/></Link>
         </div>
       </nav>
     )

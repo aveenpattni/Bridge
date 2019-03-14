@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-import NavBar from './NavBar';
 import Footer from '../Footer';
 
 export default class Home extends Component {
