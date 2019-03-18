@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 //Create the schema with all of it's respective attributes
 const studentSchema = new Schema({
+  type: {
+    type: String,
+    required: true
+  },
   fname: {
     type: String,
     required: true,
@@ -76,11 +80,11 @@ const studentSchema = new Schema({
     required: true
   },
   connections: {
-    type: [ObjectId],
+    type: [String],
     required: true
   },
   pastConnections: {
-    type: [ObjectId],
+    type: [String],
     required: true
   },
   dateCreated: {

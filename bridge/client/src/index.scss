@@ -51,5 +51,43 @@ $dark: #21386E;
   padding: 3vw 9.5vw;
   }
 }
+@mixin signUpField{
+  color: $white;
+  margin-bottom: 2rem;
+  width: 100%;
+  input{
+    height: 2rem;
+    width: 100%;
+    border: 2px solid $dark;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    padding: 0 1rem;
+  }
+}
+@mixin signUpSelect{
+  color: $white;
+  margin-bottom: 2rem;
+  width: 100%;
+  select{
+    height: 2rem;
+    width: 100%;
+    border: 2px solid $dark;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    padding: 0 1rem;
+  }
+}
+@mixin loginField{
+  color: $white;
+  text-align: center;
+  input{
+    height: 2.5rem;
+    width: 15rem;
+    border: 2px solid $dark;
+    border-radius: 0.5rem;
+    font-size: 20px;
+    padding: 0 1rem;
+  }
+}
 
  @import 'app.scss';

@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 //Create the schema with all of it's respective attributes
 const mentorSchema = new Schema({
+  type: {
+    type: String,
+    required: true
+  },
   fname: {
     type: String,
     required: true,
@@ -83,16 +87,16 @@ const mentorSchema = new Schema({
     type: [String],
     required: true
   },
-  studentLimit: {
+  connectionLimit: {
     type: Number,
     required: true
   },
   connections: {
-    type: [ObjectId],
+    type: [String],
     required: true
   },
   pastConnections: {
-    type: [ObjectId],
+    type: [String],
     required: true
   },
   dateCreated: {

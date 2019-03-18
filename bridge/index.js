@@ -2,9 +2,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 //Initiating application
 const app = express();
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 //Declaring global variables
 const PORT = 8080;
 const MONGOPORT = 27017;
@@ -16,7 +20,10 @@ mongoose.connection.on("open", () => {
 });
 
 //Routes to organize HTTP requestes
-app.use("/bridge", require('./routes/bridge.js'));
+app.use("/connect", require('./routes/bridge.js'));
+app.use("/login", require('./routes/login.js'));
+app.use("/signup", require('./routes/signup.js'));
+
 
 
 app.listen(PORT, () => {
