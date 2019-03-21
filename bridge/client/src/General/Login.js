@@ -8,27 +8,10 @@ export default class Login extends Component {
 
     this.loginForm = React.createRef();
   }
-  submitLogin = (e) => {
-    e.preventDefault();
-    const credentials = {
-      email: e.target.loginEmail.value,
-      password: e.target.loginPassword.value
-    }
-    const config = {
-      method: "post",
-      data: credentials,
-      url: 'http://localhost:8080/login',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    axios(config).then(res=>console.log(res)).catch(err=>console.log(err));
-    e.target.loginPassword.value = "";
-  }
   render() {
     return (
       <div className="login">
-        <form ref={this.loginForm} onSubmit={this.submitLogin}>
+        <form ref={this.loginForm} onSubmit={this.props.sendLogin}>
           <label className="login__email">
             <h2>Email:</h2>
             <input type="email" name="loginEmail" placeholder="Email" required/>

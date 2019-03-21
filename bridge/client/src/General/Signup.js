@@ -162,9 +162,9 @@ class Signup extends Component {
           <label className="signup__position select">
             <h3>Current Position:</h3>
             <select name="signupPosition" >
-              <option value="employed">Employed</option>
-              <option value="unemployed">Unmployed</option>
-              <option value="student">Student</option>
+              <option value="Employed">Employed</option>
+              <option value="Unemployed">Unmployed</option>
+              <option value="Student">Student</option>
             </select>
           </label>
           {
@@ -188,12 +188,12 @@ class Signup extends Component {
           <label className="signup__education select">
             <h3>Highest Current Education:</h3>
             <select name="signupEducation" required>
-              <option value="none">None</option>
-              <option value="highschool">High School Diploma</option>
-              <option value="diploma">College Diploma</option>
-              <option value="bachelor">Bachelor</option>
-              <option value="master">Master</option>
-              <option value="phd">PhD</option>
+              <option value="None">None</option>
+              <option value="Highschool">High School Diploma</option>
+              <option value="Diploma">College Diploma</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Master">Master</option>
+              <option value="PhD">PhD</option>
             </select>
           </label>
           <label className="signup__school input">
@@ -203,9 +203,9 @@ class Signup extends Component {
           <label className="signup__industry select">
             <h3>Industry:</h3>
             <select name="signupIndustry" required>
-              <option value="accounting">Accounting</option>
-              <option value="marketing">Marketing</option>
-              <option value="softwaredevelopment">Software Development</option>
+              <option value="Accounting">Accounting</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Software Development">Software Development</option>
             </select>
           </label>
           <label className="signup__skills input">

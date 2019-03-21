@@ -85,6 +85,45 @@
     }
   }
 }
+.menu{
+  background: $backGrey;
+  border: 3px solid $primary;
+  border-radius: 0 4px 4px 4px;
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  animation: moveInLeft 0.3s ease-in-out;
+  transition: all;
+  &__title{
+    align-self: center;
+    font-size: 2rem;
+  }
+  &__list{
+    list-style-type: none;
+    margin: 1rem;
+    a{
+      text-decoration: none;
+      color: $dark;
+    }
+    li{
+      background: $light;
+      border: 1px solid $dark;
+      border-radius: 4px;
+      margin: 1rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
 .menuPublic{
   background: $backGrey;
   border: 3px solid $primary;
@@ -123,7 +162,7 @@
     }
     @media(min-width: 1440px){
     }
-  }
+}
 @keyframes moveInLeft {
   0%{
     transform: translateX(-100%);
@@ -343,12 +382,12 @@
     margin: 1rem;
     font-size: 1rem;
     font-weight: bold;
-    margin-top: 0;
+    margin-top: 2.5rem;
     
   }
   &__email{
     @include loginField();
-    margin-top: 8rem;
+    margin-top: 3rem;
   } 
   &__password{
     @include loginField();
@@ -446,7 +485,80 @@
   }
 }
 
-
+.connect{
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 80px;
+  background: $backWhite;
+  display: flex;
+  flex-direction: column;
+  @media(min-width: 768px){
+  }
+  @media(min-width: 1440px){
+  }
+}
+.profileBlock{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  h4{
+    max-width: 10rem;
+    padding-bottom: 0.25rem;
+  }
+  p{
+    text-align: center;
+    flex-grow: 2;
+    background: $light;
+    border: 1px solid $dark;
+    border-radius: 4px;
+    max-height: 2.5rem;
+    overflow-y: scroll;
+    padding: 0.25rem;
+    }
+}
+.profile{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__pic{
+    margin-top: 1rem;
+    height: 7rem;
+    width: 7rem;
+    img{
+      border: 1px solid $dark;
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    } 
+  }
+  &__member{
+    width: 100%;
+  }
+}
+.profile__bio{
+  p{
+    max-height: 5.5rem;
+  }
+}
+.profile__address{
+  p{
+    max-height: 5.5rem;
+  }
+}
+.noconnections{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
 .footer{
   background: $backBlack;
   width: 100%;
