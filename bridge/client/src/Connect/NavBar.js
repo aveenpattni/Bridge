@@ -26,7 +26,7 @@ export default class NavBar extends Component {
           <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
         <div className="navbar__logo">
-          <Link to="/connect/profile" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
+          <Link to="/connect" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
         <div className="navbar__settings">
           <button onClick={this.props.logout}><img src="./Assets/settings.svg"  alt="login"/></button>

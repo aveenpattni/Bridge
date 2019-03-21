@@ -497,6 +497,33 @@
   @media(min-width: 1440px){
   }
 }
+.landing{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+  a{
+    text-decoration: none;
+    color: $black;
+  }
+  &__block{
+    height: 3rem;
+    width: 9rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $dark;
+    border-radius: 0.5rem;
+    background: $backWhite;
+    color: $dark;
+  }
+}
 .profileBlock{
   width: 100%;
   padding: 0.5rem 1rem;
@@ -549,6 +576,61 @@
   }
 }
 .noconnections{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
+.connections{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
+.noadd{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
+.add{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
+.activity{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  h3{
+    margin: 1rem;
+  }
+}
+.settings{
   background: $backBlue;
   display: flex;
   flex-direction: column;

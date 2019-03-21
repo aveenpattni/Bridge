@@ -62,6 +62,7 @@ class App extends Component {
         this.props.history.push('/connect')
       }).catch(err =>{
         window.alert(err.response.data.message);
+        this.props.cookies.remove('jwt');
       })
     e.target.loginPassword.value = "";
   }

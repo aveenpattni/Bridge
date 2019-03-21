@@ -6,7 +6,7 @@ export default class Profile extends Component {
     return (
       <div className="profile">
         <div className="profile__pic">
-          <img src={this.props.user.imageURL} alt="Profile Picture" />
+          <img src={this.props.user.imageURL} alt="Profile" />
         </div>
         <div className="profile__name">
           <h1>{this.props.user.fname} {this.props.user.lname}</h1>

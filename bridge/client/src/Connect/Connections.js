@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import {withCookies} from 'react-cookie';
 import axios from 'axios';
 
 class Connections extends Component {
   state={
-    savedToken: false
+    savedToken: false,
+    connectionList: []
   }
   componentDidMount() {
     const token = this.props.cookies.get('jwt') || ''
@@ -22,6 +24,16 @@ class Connections extends Component {
             savedToken: false
           });
           console.log(err);
+          this.props.history.push('/login');
+        });
+      axios.get(`http://localhost:8080/connect/connections/${this.props.user.email}`, config)
+        .then(res=>{
+          this.setState({
+            connectionList: res.data
+          })
+        })
+        .catch(err=>{
+          console.log(err);
         });
         
     } else {
@@ -29,7 +41,7 @@ class Connections extends Component {
     }
   }
   render() {
-    if(!this.props.user.connections || this.props.user.connections.length === 0){
+    if(!this.state.connectionList){
       return(
         <div className="noconnections">
           <h3>You have no connections</h3>
@@ -38,10 +50,12 @@ class Connections extends Component {
     }
     return (
       <div className="connections">
-        
+        {this.state.connectionList.map(item=>{
+          return <h4>{item.email}</h4>
+        })}
       </div>
     )
   }
 }
 
-export default Connections;
+export default withCookies(Connections);
