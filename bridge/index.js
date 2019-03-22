@@ -3,14 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv').config(); //this line loads the .env into process.env
+const socketio = require("socket.io");
+const Message = require('./models/message');
 
 //Initiating application
 const app = express();
+// app.use(express.static("./client/build"));
 app.use(cors());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //Declaring global variables
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const MONGOPORT = 27017;
 
 //Connecting to database
@@ -26,6 +30,37 @@ app.use("/signup", require('./routes/signup.js'));
 
 
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`App listening on http://localhost:${PORT}`);
 });
+
+
+const io = socketio(server)
+io.on('connection', (socket) => {
+  console.log(`new connection: ${socket.id}`)
+  socket.on('join', (id, err) => {
+    socket.join(id)
+    Message.find({ chatID: id })
+      .then(messages => {
+        io.to(id).emit('messages', messages)
+      })
+      .catch(err => console.log(err))
+  })
+  socket.on("newMsg", (data) => {
+    let middle = data.chatID.length / 2
+    let id1 = data.chatID.slice(0, middle);
+    let id2 = data.chatID.slice(middle);
+    id1 === data.sender ? data.receiver = id2 : data.receiver = id1
+    let newMsg = new Message(data)
+    newMsg.save()
+      .then((data) => {
+        // send msg to others
+        io.to(data.chatID).emit("received", data)
+      })
+      .catch(err => console.log(err))
+  })
+  socket.on('disconnect', (id) => {
+    console.log("leaving")
+    socket.leave(id)
+  })
+})

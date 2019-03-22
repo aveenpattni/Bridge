@@ -14,7 +14,7 @@ class Connections extends Component {
       const config = {
         headers: { authorization: token }
       }
-      axios.get(`http://localhost:8080/connect/auth`, config)
+      axios.get(`/connect/auth`, config)
         .then(res => {
           this.setState({
             savedToken: true
@@ -27,7 +27,7 @@ class Connections extends Component {
           console.log(err);
           this.props.history.push('/login');
         });
-      axios.get(`http://localhost:8080/connect/connections/${this.props.user.email}`, config)
+      axios.get(`/connect/connections/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({
             connectionList: res.data
@@ -47,13 +47,13 @@ class Connections extends Component {
       const config = {
         headers: { authorization: token }
       }
-      axios.put(`http://localhost:8080/connect/delete/${this.props.user.email}`,
+      axios.put(`/connect/delete/${this.props.user.email}`,
       {
         mentor: this.props.user.email,
         student: userEmail
       }, config)
         .then(res=>{
-          console.log(res.data);
+          //console.log(res.data);
         })
         .catch(err=>{
           console.log(err);
@@ -73,7 +73,7 @@ class Connections extends Component {
     return (
       <div className="connections">
         {this.state.connectionList.map(item=>{
-          return <ConnectionsUser key={item.email} user={item} del={this.deleteConnection}/>
+          return <ConnectionsUser key={item._id} user={this.props.user} rec={item} del={this.deleteConnection}/>
         })}
       </div>
     )

@@ -47,7 +47,7 @@ class App extends Component {
     const config = {
       method: "post",
       data: credentials,
-      url: 'http://localhost:8080/login',
+      url: '/login',
       headers: {
         'Content-Type': 'application/json'
       }

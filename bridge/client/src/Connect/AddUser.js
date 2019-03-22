@@ -24,6 +24,10 @@ class AddUser extends Component {
               </div>
             </div>
           </div>
+          <div className="adduser__email adduserBlock">
+            <h4>Email: </h4>
+            <p>{this.props.user.email}</p>
+          </div>
           <div className="adduser__bio adduserBlock">
             <h4>Bio: </h4>
             <p>{this.props.user.bio}</p>

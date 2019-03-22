@@ -590,15 +590,13 @@
   background: $backBlue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 2;
-  h3{
-    margin: 1rem;
-  }
+  margin-top: 1rem;
 }
 .CU{
-  padding: 1rem;
+  padding: 0.25rem 1rem;
   width: 100%;
   &__card{
     min-height: 3rem;
@@ -607,16 +605,28 @@
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    a{
+      text-decoration: none;
+      color: $textBlack;
+    }
     h2{
       margin-left: 0.25rem;
     }
     img{
-      border: 1px solid $dark;
       margin-right: 0.25rem;
-      width: 1rem;
-      height: 1rem;
+      width: 2rem;
+      height: 2rem;
     }
   }
+}
+.conversation{
+  background: $backBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
 }
 .noadd{
   background: $backBlue;
@@ -633,7 +643,7 @@
   background: $backBlue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 2;
   h3{

@@ -14,7 +14,7 @@ class Activity extends Component {
       const config = {
         headers: { authorization: token }
       }
-      axios.get(`http://localhost:8080/connect/auth`, config)
+      axios.get(`/connect/auth`, config)
         .then(res => {
           this.setState({
             savedToken: true
@@ -27,7 +27,7 @@ class Activity extends Component {
           console.log(err);
           this.props.history.push('/login');
         });
-      axios.get(`http://localhost:8080/connect/activity/${this.props.user.email}`, config)
+      axios.get(`/connect/activity/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({
             activityList: res.data
@@ -45,7 +45,7 @@ class Activity extends Component {
       <div className="activity">
         <h1>Activity</h1>
         {this.state.activityList.map(item=>{
-          return <ActivityEvent key={item.email} event={item}/>
+          return <ActivityEvent key={item._id} event={item}/>
         })}
       </div>
     )

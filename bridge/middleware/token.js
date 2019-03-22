@@ -1,21 +1,26 @@
-const Token = require('../Utilities/token');
+// const Token = require('../Utilities/token');
 const secret = require('../Utilities/secret');
+const jwt = require('jsonwebtoken');
 
 // This handler will check for, and validate, a token on the authorization header
 module.exports = (req, res, next) => {
-    const { authorization } = req.headers;
-    // If no token is sent in request:
-    if (!authorization) {
+    const token = req.headers.authorization;
+    // If no token is sent in request
+    if (!token) {
         res.status(401).json({
             message: 'Log in to access this page'
         })
     }
-    // Validate the token, and if valid, save to locals
-    res.locals.user = Token.verify(authorization, () => {
-        res.status(401).json({
-            message: 'Your session has expired. Log in to access this page.'
-        });
-    });
-    // If token is authorized, move on with request.
-    next();
+    // Validate the token
+    jwt.verify(token, secret, (err, decoded) => {
+      // If it is NOT authentic, reject with 401
+      if (!decoded) {
+          return res.status(401).json({
+            message: 'Invalid Token'
+        })
+      }
+      // else if it IS authorized, store identity at req.user and call next
+      req.user = decoded;
+      next();
+  })
 }

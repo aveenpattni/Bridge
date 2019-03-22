@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //Create user profile
-router.post("/", (req, res) => {
-  let newUser = User(req.body);
+router.post("/", async (req, res) => {
+  var newPass = await bcrypt.hash(req.body.password, saltRounds);
+  let newUser = new User(req.body);
+  newUser.password = newPass;
   newUser.save()
     .then(user=>{
       delete user.password;

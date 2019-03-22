@@ -27,7 +27,7 @@ class Add extends Component {
           console.log(err);
           this.props.history.push('/login');
         });
-      axios.get(`http://localhost:8080/connect/addlist/${this.props.user.email}`, config)
+      axios.get(`/connect/addlist/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({
             newList: res.data
@@ -46,7 +46,7 @@ class Add extends Component {
       const config = {
         headers: { authorization: token }
       }
-      axios.put(`http://localhost:8080/connect/adduser/${this.props.user.email}`,
+      axios.put(`/connect/adduser/${this.props.user.email}`,
       {
         mentor: this.props.user.email,
         student: newEmail

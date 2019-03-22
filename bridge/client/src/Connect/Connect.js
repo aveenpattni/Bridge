@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Profile from './Profile';
 import Connections from './Connections';
+import Conversation from './Conversation';
 import Add from './Add';
 import Activity from './Activity';
 import Settings from './Settings';
@@ -20,7 +21,7 @@ class Connect extends Component {
       const config = {
         headers: { authorization: token }
       }
-      axios.get(`http://localhost:8080/connect/auth`, config)
+      axios.get(`/connect/auth`, config)
         .then(res => {
           this.setState({
             savedToken: true
@@ -52,6 +53,7 @@ class Connect extends Component {
         <Switch>
           <Route path="/connect" exact render={() => {return <Landing user={this.props.user} /> }} />
           <Route path="/connect/profile" render={() => {return <Profile user={this.props.user}/>}}/>
+          <Route path="/connect/connections/:chatID" render={(props) => {return <Conversation {...props} user={this.props.user}/>}}/>
           <Route path="/connect/connections" render={() => {return <Connections user={this.props.user}/>}}/>
           <Route path="/connect/add" render={() => {return <Add user={this.props.user} /> }} />
           <Route path="/connect/activity" render={() => {return <Activity user={this.props.user} /> }} />

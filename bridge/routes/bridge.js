@@ -57,14 +57,14 @@ router.put("/adduser/:email", async (req, res) => {
   let newStudentConnection = await User.findOneAndUpdate(
     query, update, { new:true, runValidators:true });
   //Create Activity for Mentor
-  let newMentorActivity = Activity({
+  let newMentorActivity = new Activity({
     email: req.body.mentor,
     type: "connection",
     body: `You are now connected with ${req.body.student}.` 
   });
   newMentorActivity.save();
   //Create Activity for Student
-  let newStudentActivity = Activity({
+  let newStudentActivity = new Activity({
     email: req.body.student,
     type: "connection",
     body: `You are now connected with ${req.body.mentor}.` 
@@ -89,14 +89,14 @@ router.put("/delete/:email", async (req, res) => {
   let newStudentConnection = await User.findOneAndUpdate(
     query, update, { new:true, runValidators:true });
   //Create Activity for Mentor
-  let newMentorActivity = Activity({
+  let newMentorActivity = new Activity({
     email: req.body.mentor,
     type: "termination",
     body: `Your connection with ${req.body.student} has been terminated.` 
   });
   newMentorActivity.save();
   //Create Activity for Student
-  let newStudentActivity = Activity({
+  let newStudentActivity = new Activity({
     email: req.body.student,
     type: "termination",
     body: `Your connection with ${req.body.mentor} has been terminated.` 
