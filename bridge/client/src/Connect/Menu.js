@@ -10,7 +10,7 @@ export default class Menu extends Component {
           <Link to="/connect/profile"><li>Profile</li></Link>
           <Link to="/connect/connections"><li>Network</li></Link>
           {this.props.user.type === "mentor" ? 
-            <Link to="/connect/new"><li>New</li></Link> :
+            <Link to="/connect/add"><li>New</li></Link> :
             <></>
           }
           <Link to="/connect/activity"><li>Activity</li></Link>

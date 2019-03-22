@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {withCookies} from 'react-cookie';
 import axios from 'axios';
+import ConnectionsUser from './ConnectionsUser';
 
 class Connections extends Component {
   state={
@@ -40,6 +41,27 @@ class Connections extends Component {
       this.props.history.push('/login');
     }
   }
+  deleteConnection = userEmail => {
+    const token = this.props.cookies.get('jwt') || ''
+    if (token) {
+      const config = {
+        headers: { authorization: token }
+      }
+      axios.put(`http://localhost:8080/connect/delete/${this.props.user.email}`,
+      {
+        mentor: this.props.user.email,
+        student: userEmail
+      }, config)
+        .then(res=>{
+          console.log(res.data);
+        })
+        .catch(err=>{
+          console.log(err);
+        });
+    } else {
+      this.props.history.push('/login');
+    }
+  }
   render() {
     if(!this.state.connectionList){
       return(
@@ -51,7 +73,7 @@ class Connections extends Component {
     return (
       <div className="connections">
         {this.state.connectionList.map(item=>{
-          return <h4>{item.email}</h4>
+          return <ConnectionsUser key={item.email} user={item} del={this.deleteConnection}/>
         })}
       </div>
     )

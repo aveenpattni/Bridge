@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {withCookies} from 'react-cookie'
 import axios from 'axios';
+import AddUser from './AddUser';
 
 class Add extends Component {
   state={
@@ -26,11 +27,33 @@ class Add extends Component {
           console.log(err);
           this.props.history.push('/login');
         });
-      axios.get(`http://localhost:8080/connect/add/${this.props.user.email}`, config)
+      axios.get(`http://localhost:8080/connect/addlist/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({
             newList: res.data
           });
+        })
+        .catch(err=>{
+          console.log(err);
+        });
+    } else {
+      this.props.history.push('/login');
+    }
+  }
+  acceptMatch = (newEmail) => {
+    const token = this.props.cookies.get('jwt') || ''
+    if (token) {
+      const config = {
+        headers: { authorization: token }
+      }
+      axios.put(`http://localhost:8080/connect/adduser/${this.props.user.email}`,
+      {
+        mentor: this.props.user.email,
+        student: newEmail
+      }, config)
+        .then(res=>{
+          //remove user from newList
+          console.log(res.data);
         })
         .catch(err=>{
           console.log(err);
@@ -50,7 +73,7 @@ class Add extends Component {
     return (
       <div className="add">
         {this.state.newList.map(item=>{
-          return <h4>{item.email}</h4>
+          return <AddUser key={item.email} user={item} match={this.acceptMatch}/>
         })}
       </div>
     )

@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const activitySchema = new Schema ({
-  user: {
-    type: ObjectId,
+  email: {
+    type: String,
     required: true
   },
   type: {
