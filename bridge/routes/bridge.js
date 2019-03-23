@@ -77,14 +77,16 @@ router.put("/delete/:email", async (req, res) => {
   //Remove connection to Mentor document
   let query = {email: req.body.mentor};
   let update = {
-    $pull: { connections: req.body.student}
+    $pull: { connections: req.body.student},
+    // $push: { pastConnections: req.body.student}
   }
   let newMentorConnection = await User.findOneAndUpdate(
     query, update, { new:true, runValidators:true });
   //Remove connection to Student document
   query = {email: req.body.student};
   update = {
-    $pull: { connections: req.body.mentor}
+    $pull: { connections: req.body.mentor},
+    // $push: { pastConnections: req.body.mentor}
   }
   let newStudentConnection = await User.findOneAndUpdate(
     query, update, { new:true, runValidators:true });

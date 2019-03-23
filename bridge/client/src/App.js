@@ -15,29 +15,29 @@ class App extends Component {
     user: {},
     isLoggedIn: false
   }
-  //Use this with a user cookie to check if logged in
-  // componentDidMount() {
-  //   const token = this.props.cookies.get('jwt') || ''
-  //   if (token) {
-  //     const config = {
-  //       headers: { authorization: token }
-  //     }
-  //     axios.get(`http://localhost:8080/connect/auth`, config)
-  //       .then(res => {
-  //         this.setState({
-  //           savedToken: true
-  //         });
-  //       })
-  //       .catch(err => {
-  //         this.setState({
-  //           savedToken: false
-  //         });
-  //         console.log(err);
-  //       });
-  //   } else {
-  //     this.props.history.push('/login');
-  //   }
-  // }
+  authenticate = () => {
+    const token = this.props.cookies.get('jwt') || ''
+    if (token) {
+      const config = {
+        headers: { authorization: token }
+      }
+      axios.get(`/connect/auth`, config)
+        .then(res => {
+          this.setState({
+            isLoggedIn: true
+          });
+        })
+        .catch(err => {
+          this.setState({
+            isLoggedIn: false
+          });
+          console.log(err);
+          this.props.history.push('/login');
+        });
+    } else {
+      this.props.history.push('/login');
+    }
+  }
   sendLogin = e => {
     e.preventDefault();
     const credentials = {
@@ -84,25 +84,38 @@ class App extends Component {
     this.props.history.push('/login');
   }
   render() {
-    return (
-      <div className="app">
-        {this.state.isLoggedIn? <NavBar user={this.state.user} logout={this.logoutClick}/> : <NavBarPub /> }
-        <Switch>
-          <Route path="/" exact render={() => {return <Redirect to='/login' />}}/>
-          <Route path="/about" render={() => {return <About />}}/>
-          <Route path="/features" component={Features} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/login" render={(props) => {return <Bridge sendLogin={this.sendLogin} {...props}/>}}/>
-          <Route path="/signup" render={(props) => {return <Bridge sendLogin={this.sendLogin} {...props}/>}}/>
-          <Route path="/connect" render={(props) => {return <Connect 
-                                                      {...props} 
-                                                      user={this.state.user}
-                                                      logoutClick={this.logoutClick}
-                                                      logout={this.logout}
-                                                      />}} />
-        </Switch>
-      </div>
-    );
+    if (!this.state.isLoggedIn){
+      return(
+        <div className="app">
+        <NavBarPub />
+          <Switch>
+            <Route path="/" exact render={() => {return <Redirect to='/login' />}}/>
+            <Route path="/about" render={() => {return <About />}}/>
+            <Route path="/features" component={Features} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/login" render={(props) => {return <Bridge sendLogin={this.sendLogin} {...props}/>}}/>
+            <Route path="/signup" render={(props) => {return <Bridge sendLogin={this.sendLogin} {...props}/>}}/>
+            <Route path="/" render={() => {return <Redirect to="/login" />}} />
+          </Switch>
+        </div>
+      )
+    } else{
+      return (
+        <div className="app">
+          <NavBar user={this.state.user} logout={this.logoutClick}/>
+          <Switch>
+            <Route path="/connect" render={(props) => {return <Connect 
+                                                        {...props} 
+                                                        user={this.state.user}
+                                                        logoutClick={this.logoutClick}
+                                                        logout={this.logout}
+                                                        authenticate={this.authenticate}
+                                                        />}} />
+            <Route path="/" render={() => {return <Redirect to='/connect' />}}/>
+          </Switch>
+        </div>
+      )
+    }
   }
 }
 

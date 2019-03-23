@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Moment from 'moment';
 
 export default class Profile extends Component {
+  componentDidMount(){
+    this.props.authenticate();
+  }
   render() {
     return (
       <div className="profile">

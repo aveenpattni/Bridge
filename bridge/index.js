@@ -54,7 +54,6 @@ io.on('connection', (socket) => {
     let newMsg = new Message(data)
     newMsg.save()
       .then((data) => {
-        // send msg to others
         io.to(data.chatID).emit("received", data)
       })
       .catch(err => console.log(err))

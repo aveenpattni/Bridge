@@ -15,6 +15,7 @@ export default class Menu extends Component {
           }
           <Link to="/connect/activity"><li>Activity</li></Link>
           <Link to="/connect/settings"><li>Settings</li></Link>
+          <button onClick={this.props.logout}><li>Logout</li></button>
         </ul>
       </div>
     )

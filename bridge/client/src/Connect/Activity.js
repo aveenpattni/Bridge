@@ -5,28 +5,15 @@ import ActivityEvent from './ActivityEvent';
 
 class Activity extends Component {
   state={
-    savedToken: false,
     activityList: []
   }
   componentDidMount() {
+    this.props.authenticate();
     const token = this.props.cookies.get('jwt') || ''
     if (token) {
       const config = {
         headers: { authorization: token }
       }
-      axios.get(`/connect/auth`, config)
-        .then(res => {
-          this.setState({
-            savedToken: true
-          });
-        })
-        .catch(err => {
-          this.setState({
-            savedToken: false
-          });
-          console.log(err);
-          this.props.history.push('/login');
-        });
       axios.get(`/connect/activity/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({
@@ -41,6 +28,13 @@ class Activity extends Component {
     }
   }
   render() {
+    if(!this.state.activityList || this.state.activityList.length === 0){
+      return(
+        <div className="noactivity">
+          <h3>No new activity</h3>
+        </div>
+      )
+    }
     return (
       <div className="activity">
         <h1>Activity</h1>

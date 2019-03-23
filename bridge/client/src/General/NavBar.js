@@ -22,14 +22,14 @@ export default class NavBar extends Component {
     return (
       <nav className="navbarPublic">
         {this.state.menuVisible ? <Menu toggle={this.toggleMenu}/> : <></>}      
-        <div className="navbarPublic__menu" onClick={this.toggleMenu}>
-          <img src="./Assets/menu.svg"  alt="menu"/>
+        <div className="navbarPublic__settings">
+          <Link to="/login"><img src="./Assets/login.svg"  alt="login"/></Link>
         </div>
         <div className="navbarPublic__logo">
           <Link to="/about" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
-        <div className="navbarPublic__settings">
-          <Link to="/login"><img src="./Assets/login.svg"  alt="login"/></Link>
+        <div className="navbarPublic__menu" onClick={this.toggleMenu}>
+          <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
       </nav>
     )

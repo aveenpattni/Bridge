@@ -5,28 +5,15 @@ import AddUser from './AddUser';
 
 class Add extends Component {
   state={
-    savedToken: false,
     newList: []
   }
   componentDidMount() {
+    this.props.authenticate();
     const token = this.props.cookies.get('jwt') || ''
     if (token) {
       const config = {
         headers: { authorization: token }
       }
-      axios.get(`http://localhost:8080/connect/auth`, config)
-        .then(res => {
-          this.setState({
-            savedToken: true
-          });
-        })
-        .catch(err => {
-          this.setState({
-            savedToken: false
-          });
-          console.log(err);
-          this.props.history.push('/login');
-        });
       axios.get(`/connect/addlist/${this.props.user.email}`, config)
         .then(res=>{
           this.setState({

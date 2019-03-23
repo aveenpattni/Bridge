@@ -4,7 +4,6 @@ const User = require('../models/user');
 const Token = require('../Utilities/token');
 const bcrypt = require('bcrypt');
 
-//Authenticate login
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
   //If there are any fields missing, send back 404 error
@@ -33,7 +32,7 @@ router.post("/", async (req, res) => {
   delete foundUser.password;
   res.status(202).json({
     user: foundUser,
-    token: Token.create(foundUser, 600)
+    token: Token.create(foundUser, 6000)
   })
 });
 

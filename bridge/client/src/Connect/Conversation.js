@@ -9,11 +9,11 @@ class Conversation extends Component {
     messageList: []
   }
   componentDidMount() {
+    this.props.authenticate();
     let id = this.props.match.params.chatID;
     socket.emit('join', id)
     // All messages
     socket.on('messages', (data) => {
-      console.log(data);
       this.setState({
         messageList: data
       })
@@ -57,7 +57,7 @@ class Conversation extends Component {
             !this.state.messageList ?
               <h3>Start a conversation!</h3> :
               this.state.messageList.map(msg => {
-                return <p>{msg.body}</p>
+                return <p key={msg._id}>{msg.body}</p>
               })
           }
         </div>

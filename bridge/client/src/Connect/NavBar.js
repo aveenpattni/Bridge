@@ -21,15 +21,15 @@ export default class NavBar extends Component {
   render() {
     return (
       <nav className="navbar">
-        {this.state.menuVisible ? <Menu toggle={this.toggleMenu} user={this.props.user}/> : <></>}      
-        <div className="navbar__menu" onClick={this.toggleMenu}>
-          <img src="./Assets/menu.svg"  alt="menu"/>
+        {this.state.menuVisible ? <Menu toggle={this.toggleMenu} user={this.props.user} logout={this.props.logout}/> : <></>}      
+        <div className="navbar__back">
+          <button onClick={this.props.logout}><img src="./Assets/Icons/back.svg"  alt="back"/></button>
         </div>
         <div className="navbar__logo">
           <Link to="/connect" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
-        <div className="navbar__settings">
-          <button onClick={this.props.logout}><img src="./Assets/settings.svg"  alt="login"/></button>
+        <div className="navbar__menu" onClick={this.toggleMenu}>
+          <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
       </nav>
     )
