@@ -753,19 +753,80 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    h4{
-    }
   }
 }
 .settings{
   background: $backBlue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-grow: 2;
-  h3{
-    margin: 1rem;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  &__title{
+    //padding: 0.5rem;
+    border-bottom: 2px dotted $secondary;
+  }
+  &__landing{
+    width: 100%;
+  }
+  a{
+    text-decoration: none;
+    color: $textBlack;
+  }
+  li{
+    list-style-type: none;
+    background: $primary;
+    border: 2px solid $dark;
+    border-radius: 4px;
+    margin-top: 1rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__menu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.invite{
+  width: 100%;
+  form{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  &__formVal{
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  input{
+    height: 2rem;
+  }
+  textarea{
+    min-height: 10rem;
+  }
+  button{
+    height: 3rem;
+    width: 8rem;
+    border: 2px solid $dark;
+    border-radius: 4px;
+    background: $primary;
+  }
+}
+.notif{
+  &__title{
+    margin: 1rem 0;
   }
 }
 .footer{

@@ -37,7 +37,6 @@ const server = app.listen(PORT, () => {
 
 const io = socketio(server)
 io.on('connection', (socket) => {
-  console.log(`new connection: ${socket.id}`)
   socket.on('join', (id, err) => {
     socket.join(id)
     Message.find({ chatID: id })
@@ -59,7 +58,6 @@ io.on('connection', (socket) => {
       .catch(err => console.log(err))
   })
   socket.on('disconnect', (id) => {
-    console.log("leaving")
     socket.leave(id)
   })
 })

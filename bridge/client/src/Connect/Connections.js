@@ -37,7 +37,11 @@ class Connections extends Component {
           student: userEmail
         }, config)
         .then(res => {
-          //console.log(res.data);
+          this.setState({
+            connectionList: this.state.connectionList.filter(item=>{
+              return item.email !== userEmail
+            })
+          })
         })
         .catch(err => {
           console.log(err);

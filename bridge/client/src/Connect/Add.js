@@ -39,8 +39,11 @@ class Add extends Component {
         student: newEmail
       }, config)
         .then(res=>{
-          //remove user from newList
-          console.log(res.data);
+          this.setState({
+            newList: this.state.newList.filter(item=>{
+              return item.email !== newEmail
+            })
+          })
         })
         .catch(err=>{
           console.log(err);
