@@ -3,17 +3,36 @@ import {Route, Link, Switch} from 'react-router-dom';
 import Account from './Account';
 import Invite from './Invite';
 import Notif from './Notif';
+import axios from 'axios';
+import {withCookies} from 'react-cookie'
 
 
-export default class Settings extends Component {
+class Settings extends Component {
   componentDidMount(){
     this.props.authenticate();
+  }
+  accountUpdate = (update) => {
+    const token = this.props.cookies.get('jwt') || ''
+    if (token) {
+      const config = {
+        headers: { authorization: token }
+      }
+      axios.put(`/connect/settings/account/${this.props.user.email}`, update, config)
+        .then(res => {
+          //update the user body;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      this.props.history.push('/login');
+    }
   }
   render() {
     return (
       <div className="settings">
         <Switch>
-          <Route path="/connect/settings/account" render={() => {return <Account user={this.props.user}/>}}/>
+          <Route path="/connect/settings/account" render={() => {return <Account user={this.props.user} update={this.accountUpdate}/>}}/>
           <Route path="/connect/settings/invite" render={() => {return <Invite user={this.props.user}/>}}/>
           <Route path="/connect/settings/notifications" render={() => {return <Notif user={this.props.user}/>}}/>
           <Route path="/" render={()=>{
@@ -42,3 +61,5 @@ export default class Settings extends Component {
     )
   }
 }
+
+export default withCookies(Settings);

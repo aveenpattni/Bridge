@@ -112,6 +112,24 @@ router.get("/activity/:email", async (req, res) => {
     email: req.params.email
   }).sort({dateCreated: -1})
   res.json(foundItems);
-})
+});
+
+router.put("/settings/account/:email", async(req, res) =>{
+  //Update User information
+  let query = {email: req.params.email};
+  let update = req.body;
+  let options = {new:true, runValidators:true};
+  let updatedUser = await User.findOneAndUpdate(
+    query,update,options);
+  //Create Activity
+  let newActivity = new Activity({
+    email: req.params.email,
+    type: "update",
+    body: "You updated your account information."
+  });
+  newActivity.save();
+  delete updatedUser.password;
+  res.json(updatedUser);
+});
 
 module.exports = router;
