@@ -4,18 +4,22 @@ const User = require('../models/user');
 const Activity = require('../models/activity');
 const isAuthenticated = require('../middleware/token');
 const score = require('../Utilities/score');
+var sortBy = require('sort-by');
 
 //Checks if any request made to this route has an authenticated token
 router.use(isAuthenticated);
 
 //Get personal user Profile
-router.get("/auth", (req, res) => {
-  //Token is validated
-  res.json({
-    token: "valid"
+router.get("/auth", async (req, res) => {
+  let user = await User.findOne({
+    email: req.user.user.email
   });
+  user = user.toObject();
+  delete user.password;
+  res.json(user);
 });
 
+//Gets list of current connections
 router.get("/connections/:email", async (req, res) => {
   let user = await User.findOne({
     email: req.params.email
@@ -28,6 +32,7 @@ router.get("/connections/:email", async (req, res) => {
   res.json(foundItems);
 })
 
+//Get list of new students to connect with for mentors
 router.get("/addlist/:email", async (req, res) => {
   let user = await User.findOne({
     email: req.params.email
@@ -38,15 +43,16 @@ router.get("/addlist/:email", async (req, res) => {
       $nin: user.connections
     }
   });
+  //This is where the matching algorithm takes place
   let scoreList = [];
-  //This is where the matching algorithm must take place
   for (let item of foundItems){
     item = item.toObject();
     item.score = score(user, item)
     scoreList.push(item);
   }
-  console.log(scoreList);
-  //Sort items based on score
+  scoreList.sort(sortBy('-score'));
+  scoreList.splice(3);
+  //
   res.json(scoreList);
 });
 

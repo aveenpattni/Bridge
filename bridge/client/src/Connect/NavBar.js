@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Menu from './Menu';
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   state={
     menuVisible: false
   }
@@ -23,7 +23,7 @@ export default class NavBar extends Component {
       <nav className="navbar">
         {this.state.menuVisible ? <Menu toggle={this.toggleMenu} user={this.props.user} logout={this.props.logout}/> : <></>}      
         <div className="navbar__back">
-          <button onClick={this.props.logout}><img src="./Assets/Icons/back.svg"  alt="back"/></button>
+          <button onClick={this.props.history.goBack}><img src="./Assets/Icons/back.svg"  alt="back"/></button>
         </div>
         <div className="navbar__logo">
           <Link to="/connect" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
@@ -35,3 +35,5 @@ export default class NavBar extends Component {
     )
   }
 }
+
+export default withRouter(NavBar);

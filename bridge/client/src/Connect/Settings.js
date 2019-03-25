@@ -4,15 +4,13 @@ import Account from './Account';
 import Invite from './Invite';
 import Notif from './Notif';
 import axios from 'axios';
-import {withCookies} from 'react-cookie'
-
 
 class Settings extends Component {
   componentDidMount(){
     this.props.authenticate();
   }
   accountUpdate = (update) => {
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -62,4 +60,4 @@ class Settings extends Component {
   }
 }
 
-export default withCookies(Settings);
+export default Settings;

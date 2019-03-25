@@ -47,6 +47,11 @@ class ConnectionsUser extends Component {
             <h4>Industry: </h4>
             <p>{this.props.rec.industry}</p>
           </div>
+          <div className="profile__company profileBlock">
+            <h4>Company: </h4>
+            <p>{this.props.rec.company.charAt(0).toUpperCase() +
+              this.props.rec.company.slice(1)}</p>
+          </div>
           <div className="profile__education profileBlock">
             <h4>Education: </h4>
             <p>{this.props.rec.education}</p>

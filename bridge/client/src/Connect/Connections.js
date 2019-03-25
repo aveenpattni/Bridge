@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withCookies } from 'react-cookie';
 import axios from 'axios';
 import ConnectionsUser from './ConnectionsUser';
 
@@ -9,7 +8,7 @@ class Connections extends Component {
   }
   componentDidMount() {
     this.props.authenticate();
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -26,7 +25,7 @@ class Connections extends Component {
     }
   }
   deleteConnection = userEmail => {
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -68,4 +67,4 @@ class Connections extends Component {
   }
 }
 
-export default withCookies(Connections);
+export default Connections;

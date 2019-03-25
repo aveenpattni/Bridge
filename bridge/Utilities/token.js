@@ -3,6 +3,6 @@ const secret = process.env.SECRET || require('./secret');
 
 module.exports = class {
     static create(user, expiry) {
-        return jwt.sign({user}, secret, { expiresIn: expiry || "1h" });
+        return jwt.sign({user}, secret, { expiresIn: expiry || "10h" });
     }
 }

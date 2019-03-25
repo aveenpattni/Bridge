@@ -39,6 +39,10 @@ class AddUser extends Component {
           <div className="adduser__industry adduserBlock">
             <h4>Industry: </h4>
             <p>{this.props.user.industry}</p>
+          </div><div className="adduser__company adduserBlock">
+            <h4>Company: </h4>
+            <p>{this.props.user.company.charAt(0).toUpperCase() +
+              this.props.user.company.slice(1)}</p>
           </div>
           <div className="adduser__education adduserBlock">
             <h4>Education: </h4>

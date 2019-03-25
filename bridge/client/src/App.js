@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
 import NavBarPub from './General/NavBar';
 import About from './General/About';
 import Features from './General/Features';
@@ -20,8 +19,7 @@ class App extends Component {
     this.authenticate();
   }
   authenticate = () => {
-    const token = this.props.cookies.get('jwt') || ''
-    console.log(token);
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -29,7 +27,8 @@ class App extends Component {
       axios.get(`/connect/auth`, config)
         .then(res => {
           this.setState({
-            isLoggedIn: true
+            isLoggedIn: true,
+            user: res.data
           });
         })
         .catch(err => {
@@ -59,7 +58,7 @@ class App extends Component {
     }
     axios(config)
       .then(res => {
-        this.props.cookies.set('jwt', res.data.token);
+        localStorage.setItem("jwt", res.data.token);
         this.setState({
           user: res.data.user,
           isLoggedIn: true
@@ -67,12 +66,12 @@ class App extends Component {
         this.props.history.push('/connect')
       }).catch(err => {
         window.alert(err.response.data.message);
-        this.props.cookies.remove('jwt');
+        localStorage.removeItem("jwt");
       })
     e.target.loginPassword.value = "";
   }
   logout = () => {
-    this.props.cookies.remove('jwt');
+    localStorage.removeItem("jwt");
     this.setState({
       user: {},
       isLoggedIn: false
@@ -81,7 +80,7 @@ class App extends Component {
   }
   logoutClick = e => {
     e.preventDefault();
-    this.props.cookies.remove('jwt');
+    localStorage.removeItem("jwt");
     this.setState({
       user: {},
       isLoggedIn: false
@@ -126,4 +125,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(withCookies(App));
+export default withRouter(App);

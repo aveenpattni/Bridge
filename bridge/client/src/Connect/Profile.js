@@ -35,6 +35,11 @@ export default class Profile extends Component {
           <h4>Industry: </h4>
           <p>{this.props.user.industry}</p>
         </div>
+        <div className="profile__company profileBlock">
+          <h4>Company: </h4>
+          <p>{this.props.user.company.charAt(0).toUpperCase() +
+            this.props.user.company.slice(1)}</p>
+        </div>
         <div className="profile__education profileBlock">
           <h4>Education: </h4>
           <p>{this.props.user.education}</p>

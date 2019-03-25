@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withCookies } from 'react-cookie';
 import { Switch, Route } from 'react-router-dom';
 import Profile from './Profile';
 import Connections from './Connections';
@@ -56,4 +55,4 @@ class Connect extends Component {
     )
   }
 }
-export default withCookies(Connect);
+export default Connect;

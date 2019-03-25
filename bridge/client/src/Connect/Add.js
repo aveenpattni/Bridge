@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {withCookies} from 'react-cookie'
 import axios from 'axios';
 import AddUser from './AddUser';
 
@@ -9,7 +8,7 @@ class Add extends Component {
   }
   componentDidMount() {
     this.props.authenticate();
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -28,7 +27,7 @@ class Add extends Component {
     }
   }
   acceptMatch = (newEmail) => {
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -70,4 +69,4 @@ class Add extends Component {
   }
 }
 
-export default withCookies(Add);
+export default Add;

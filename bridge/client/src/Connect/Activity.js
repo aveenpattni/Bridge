@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {withCookies} from 'react-cookie';
 import axios from 'axios';
 import ActivityEvent from './ActivityEvent';
 
@@ -9,7 +8,7 @@ class Activity extends Component {
   }
   componentDidMount() {
     this.props.authenticate();
-    const token = this.props.cookies.get('jwt') || ''
+    const token = localStorage.getItem("jwt") || '';
     if (token) {
       const config = {
         headers: { authorization: token }
@@ -46,4 +45,4 @@ class Activity extends Component {
   }
 }
 
-export default withCookies(Activity);
+export default Activity;
