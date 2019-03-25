@@ -26,13 +26,13 @@ class Signup extends Component {
       },
       bio: e.target.signupBio.value,
       currentPosition: e.target.signupPosition.value,
-      company: e.target.signupCompany.value.toLowerCase(),
+      company: e.target.signupCompany.value,
       yearsExperience: e.target.signupExperience.value,
       education: e.target.signupEducation.value,
-      school: e.target.signupSchool.value.toLowerCase(),
+      school: e.target.signupSchool.value,
       industry: e.target.signupIndustry.value,
-      skills: e.target.signupSkills.value.toLowerCase().split(" "),
-      interests: e.target.signupInterests.value.toLowerCase().split(" "),
+      skills: e.target.signupSkills.value.split(" "),
+      interests: e.target.signupInterests.value.split(" "),
     };
     const config = {
       method: "post",
@@ -151,8 +151,61 @@ class Signup extends Component {
             <h3>Industry:</h3>
             <select name="signupIndustry" required>
               <option value="Accounting">Accounting</option>
+              <option value="Aerospace">Aerospace</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Automotive">Automotive</option>
+              <option value="Banks">Banks</option>
+              <option value="Bars">Bars</option>
+              <option value="Broadcasting">Broadcasting</option>
+              <option value="Building">Building</option>
+              <option value="Business">Business</option>
+              <option value="Clothing">Clothing</option>
+              <option value="College">College</option>
+              <option value="Computer Hardware">Computer Hardware</option>
+              <option value="Computer Software">Computer Software</option>
+              <option value="Construction">Construction</option>
+              <option value="Defense">Defense</option>
+              <option value="Dental">Dental</option>
+              <option value="Education">Education</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Energy">Energy</option>
+              <option value="Environment">Environment</option>
+              <option value="Farming">Farming</option>
+              <option value="Finance">Finance</option>
+              <option value="Food">Food</option>
+              <option value="Government">Government</option>
+              <option value="Health">Health</option>
+              <option value="Hospital">Hospital</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Human Rights">Human Rights</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Labor">Labor</option>
+              <option value="Law">Law</option>
+              <option value="Manufacturing">Manufacturing</option>
               <option value="Marketing">Marketing</option>
+              <option value="Medicine">Medicine</option>
+              <option value="Mining">Mining</option>
+              <option value="Music">Music</option>
+              <option value="Non-Profit">Non-Profit</option>
+              <option value="Nutrition">Nutrition</option>
+              <option value="Other">Other</option>
+              <option value="Pharmaceuticals">Pharmaceuticals</option>
+              <option value="Police">Police</option>
+              <option value="Radio">Radio</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Retired">Retired</option>
+              <option value="Securities">Securities</option>
               <option value="Software Development">Software Development</option>
+              <option value="Sports">Sports</option>
+              <option value="Telecom">Telecom</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Trucking">Trucking</option>
+              <option value="TV">TV</option>
+              <option value="Venture Capital">Venture Capital</option>
+              <option value="Waste Management">Waste Management</option>
             </select>
           </label>
           <label className="signup__skills input">

@@ -527,6 +527,11 @@
     border-radius: 0.5rem;
     background: $backWhite;
     color: $dark;
+    transition: 0.2s all;
+    &:hover{
+      background: $secondary;
+      color: white;
+    }
   }
 }
 .profileBlock{
@@ -601,22 +606,26 @@
   margin-top: 1rem;
 }
 .CU{
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   &__card{
     min-height: 3rem;
     width: 100%;
-    border: 2px solid $dark;
-    border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1rem;
     a{
       text-decoration: none;
       color: $textBlack;
     }
     h2{
+      border: 2px solid $dark;
+      border-radius: 4px;
+      background: $light;
+      color: $white;
       margin-left: 0.25rem;
+      padding: 0.25rem;
     }
     img{
       margin-right: 0.25rem;
@@ -624,6 +633,11 @@
       height: 2rem;
     }
   }
+}
+.connectionProfile{
+  border: 2px solid $dark;
+  border-radius: 4px;
+  background: $backWhite;
 }
 .conversation{
   background: $backBlue;
@@ -829,6 +843,9 @@
     margin: 1rem 0;
   }
 }
+.account{
+  width: 100%;
+}
 .accountFormBlock{
   width: 100%;
   padding: 0.5rem 1rem;
@@ -913,6 +930,12 @@
 .accountForm__address{
   p{
     max-height: 5.5rem;
+  }
+}
+.accountForm__name{
+  input{
+    width: 7.5rem;
+    margin: 0.25rem;
   }
 }
 .footer{

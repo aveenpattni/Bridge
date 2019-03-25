@@ -10,7 +10,7 @@ class Connections extends Component {
   componentDidMount() {
     this.props.authenticate();
     const token = this.props.cookies.get('jwt') || ''
-    if(token){
+    if (token) {
       const config = {
         headers: { authorization: token }
       }
@@ -38,7 +38,7 @@ class Connections extends Component {
         }, config)
         .then(res => {
           this.setState({
-            connectionList: this.state.connectionList.filter(item=>{
+            connectionList: this.state.connectionList.filter(item => {
               return item.email !== userEmail
             })
           })

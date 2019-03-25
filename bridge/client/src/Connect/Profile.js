@@ -69,7 +69,8 @@ export default class Profile extends Component {
           <p>
             {this.props.user.location.address}<br/>
             {this.props.user.location.postal}<br/>
-            {this.props.user.location.city}<br/>
+            {this.props.user.location.city.charAt(0).toUpperCase() +
+              this.props.user.location.city.slice(1)}<br/>
             {this.props.user.location.state}
           </p>
         </div>

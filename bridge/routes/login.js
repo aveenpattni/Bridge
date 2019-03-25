@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
   delete foundUser.password;
   res.status(202).json({
     user: foundUser,
-    token: Token.create(foundUser, 6000)
+    token: Token.create(foundUser, '10h')
   })
 });
 

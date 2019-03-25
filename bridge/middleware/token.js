@@ -13,6 +13,9 @@ module.exports = (req, res, next) => {
     }
     // Validate the token
     jwt.verify(token, secret, (err, decoded) => {
+      if(err){
+        console.log(err);
+      }
       // If it is NOT authentic, reject with 401
       if (!decoded) {
           return res.status(401).json({

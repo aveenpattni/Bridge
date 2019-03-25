@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Activity = require('../models/activity');
 const isAuthenticated = require('../middleware/token');
+const score = require('../Utilities/score');
 
 //Checks if any request made to this route has an authenticated token
 router.use(isAuthenticated);
@@ -37,8 +38,16 @@ router.get("/addlist/:email", async (req, res) => {
       $nin: user.connections
     }
   });
+  let scoreList = [];
   //This is where the matching algorithm must take place
-  res.json(foundItems);
+  for (let item of foundItems){
+    item = item.toObject();
+    item.score = score(user, item)
+    scoreList.push(item);
+  }
+  console.log(scoreList);
+  //Sort items based on score
+  res.json(scoreList);
 });
 
 router.put("/adduser/:email", async (req, res) => {

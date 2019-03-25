@@ -28,13 +28,12 @@ app.use("/connect", require('./routes/bridge.js'));
 app.use("/login", require('./routes/login.js'));
 app.use("/signup", require('./routes/signup.js'));
 
-
-
+//Instruct server to listen
 const server = app.listen(PORT, () => {
   console.log(`App listening on http://localhost:${PORT}`);
 });
 
-
+//Configuring socket
 const io = socketio(server)
 io.on('connection', (socket) => {
   socket.on('join', (id, err) => {
