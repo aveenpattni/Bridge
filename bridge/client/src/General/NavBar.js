@@ -28,7 +28,7 @@ export default class NavBar extends Component {
         <div className="navbarPublic__logo">
           <Link to="/about" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
-        <div className="navbarPublic__menu" onClick={this.toggleMenu}>
+        <div className={this.state.menuVisible? "navbarPublic__menu navbarPublic__toggled" : "navbarPublic__menu"}  onClick={this.toggleMenu}>
           <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
       </nav>

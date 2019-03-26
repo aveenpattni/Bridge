@@ -12,7 +12,8 @@ import axios from 'axios';
 class App extends Component {
   state = {
     user: {},
-    isLoggedIn: false
+    isLoggedIn: false,
+    loginFail: false
   }
   componentDidMount(){
     console.log("Created by Aveen Pattni");
@@ -33,7 +34,8 @@ class App extends Component {
         })
         .catch(err => {
           this.setState({
-            isLoggedIn: false
+            isLoggedIn: false,
+            loginFail: false
           });
           console.log(err);
           this.props.history.push('/login');
@@ -61,11 +63,14 @@ class App extends Component {
         localStorage.setItem("jwt", res.data.token);
         this.setState({
           user: res.data.user,
-          isLoggedIn: true
+          isLoggedIn: true,
+          loginFail: false
         });
         this.props.history.push('/connect')
       }).catch(err => {
-        window.alert(err.response.data.message);
+        this.setState({
+          loginFail: true
+        });
         localStorage.removeItem("jwt");
       })
     e.target.loginPassword.value = "";
@@ -97,7 +102,7 @@ class App extends Component {
             <Route path="/about" render={() => { return <About /> }} />
             <Route path="/features" component={Features} />
             <Route path="/contact" component={Contact} />
-            <Route path="/login" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} /> }} />
+            <Route path="/login" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} fail={this.state.loginFail}/> }} />
             <Route path="/signup" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} /> }} />
             <Route path="/" render={() => { return <Redirect to="/login" /> }} />
           </Switch>

@@ -147,4 +147,13 @@ router.put("/settings/account/:email", async(req, res) =>{
   res.json(updatedUser);
 });
 
+router.get("/connections/receiver/:recID", async (req, res) => {
+  var foundUser = await User.findOne({
+    _id: req.params.recID
+  });
+  foundUser = foundUser.toObject();
+  delete foundUser.password;
+  res.json(foundUser);
+})
+
 module.exports = router;

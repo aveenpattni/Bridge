@@ -19,6 +19,9 @@ export default class Login extends Component {
             <h2>Password:</h2>
             <input type="password" name="loginPassword" placeholder="Password" required/>
           </label>
+          {
+            this.props.fail ? <h4>Invalid Email/Password</h4> : null
+          }
           <button className="login__loginbutton" type="submit">Login</button>
         </form>
         <div className="login__newUser">

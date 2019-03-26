@@ -11,6 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+h1{
+
+}
 *{
   margin: 0;
   padding: 0;
@@ -32,11 +39,11 @@ $textBlack: #323232;
 $textWhite: #FAFAFA;
 $backWhite: #F0F0F0;
 $backBlue: #e9f1f7;
-$backGrey: #AFAFAF;
+$backGrey: #BFBFBF;
 $backBlack: #626262;
-$primary: rgba(87, 154, 255, 0.5);
-$secondary: #154FBB;
-$tertiary: #8080FF;
+$primary: #044ea1;
+$secondary: #7C7C7C;
+$tertiary: #2B303A;
 $light: #9FB8DE;
 $dark: #21386E;
 
@@ -87,6 +94,9 @@ $dark: #21386E;
     border-radius: 0.5rem;
     font-size: 20px;
     padding: 0 1rem;
+  }
+  input:focus{
+    background: $backGrey;
   }
 }
 

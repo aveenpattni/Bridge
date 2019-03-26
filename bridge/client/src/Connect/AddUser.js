@@ -7,12 +7,20 @@ class AddUser extends Component {
     this.props.match(this.props.user.email);
   }
   render() {
+    let scoreColor = ''
+    if(this.props.user.score > 500){
+      scoreColor = "adduser__high";
+    } else if(this.props.user.score > 250){
+      scoreColor = "adduser__mid"
+    } else{
+      scoreColor = "adduser__low"
+    }
     return (
       <section className="adduser">
         <div className="adduser__card">
           <div className="adduser__header">
             <div className="adduser__display">
-              <img src={this.props.user.imageURL} alt="Display" />
+              <img src={this.props.user.imageURL} alt="Display" className={scoreColor}/>
             </div>
             <div className="adduser__person">
               <div className="adduser__name">
@@ -20,7 +28,12 @@ class AddUser extends Component {
               </div>
               <div className="adduser__city">
                 <h4>City: </h4>
-                <p>{this.props.user.location.city}</p>
+                <p>{this.props.user.location.city.charAt(0).toUpperCase() +
+                this.props.user.location.city.slice(1)}</p>
+              </div>
+              <div className="adduser__city">
+                <h4>Match Score: </h4>
+                <p>{Math.round(this.props.user.score)}</p>
               </div>
             </div>
           </div>

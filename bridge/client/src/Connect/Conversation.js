@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import ioClient from 'socket.io-client';
+import axios from 'axios';
 
 let socket = ioClient.connect('http://localhost:8080');
 
 class Conversation extends Component {
   state = {
     message: "",
-    messageList: []
+    messageList: [],
+    receiver: {}
   }
   componentDidMount() {
     this.props.authenticate();
+    this.getReceiver();
     let id = this.props.match.params.chatID;
     socket.emit('join', id)
     // All messages
@@ -24,6 +27,31 @@ class Conversation extends Component {
         messageList: [...this.state.messageList, message]
       })
     })
+  }
+  getReceiver = () =>{
+    let middle = this.props.match.params.chatID.length / 2;
+    let rec = this.props.match.params.chatID.slice(0, middle);
+    let other = this.props.match.params.chatID.slice(middle);
+    if (rec === this.props.user._id){
+      rec = other;
+    }
+    const token = localStorage.getItem("jwt") || '';
+    if (token) {
+      const config = {
+        headers: { authorization: token }
+      }
+      axios.get(`/connect/connections/receiver/${rec}`, config)
+        .then(res=>{
+          this.setState({
+            receiver: res.data
+          })
+        })
+        .catch(err=>{
+          console.log(err);
+        });
+    } else {
+      this.props.history.push('/login');
+    }
   }
   msgSubmit = (e) => {
     e.preventDefault();
@@ -50,20 +78,25 @@ class Conversation extends Component {
     return (
       <div className="conversation">
         <div className="conversation__header">
-          <h1>Temp</h1>
+          <img src={this.state.receiver.imageURL} alt={this.state.receiver.fname}/>
+          <h2>{this.state.receiver.fname} {this.state.receiver.lname}</h2>
         </div>
         <div className="conversation__chat">
           {
             !this.state.messageList ?
               <h3>Start a conversation!</h3> :
               this.state.messageList.map(msg => {
-                return <p key={msg._id}>{msg.body}</p>
+                return (
+                  <p key={msg._id} className={msg.sender === this.props.user._id ? "conversation__sent" : "conversation__rec"}>
+                    {msg.body}
+                  </p>
+                )
               })
           }
         </div>
         <div className="conversation__post">
           <form onSubmit={this.msgSubmit}>
-            <input type="text" onChange={this.msgChange} value={this.state.message}
+            <textarea type="text" onChange={this.msgChange} value={this.state.message}
               placeholder="Send a message" name="msgInput" required />
             <button type="submit">Send</button>
           </form>

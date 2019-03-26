@@ -28,7 +28,7 @@ class NavBar extends Component {
         <div className="navbar__logo">
           <Link to="/connect" onClick={window.scrollTo(0, 0)}><img src="./Assets/logo.png"  alt="logo"/></Link>
         </div>
-        <div className="navbar__menu" onClick={this.toggleMenu}>
+        <div className={this.state.menuVisible? "navbar__menu navbar__toggled" : "navbar__menu"}  onClick={this.toggleMenu}>
           <img src="./Assets/menu.svg"  alt="menu"/>
         </div>
       </nav>

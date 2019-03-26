@@ -36,7 +36,7 @@ class Activity extends Component {
     }
     return (
       <div className="activity">
-        <h1>Activity</h1>
+        <h1>{this.props.user.fname}'s Activity</h1>
         {this.state.activityList.map(item=>{
           return <ActivityEvent key={item._id} event={item}/>
         })}

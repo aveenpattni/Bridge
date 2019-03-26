@@ -53,7 +53,7 @@ class Connections extends Component {
     if (!this.state.connectionList || this.state.connectionList.length < 1) {
       return (
         <div className="noconnections">
-          <h3>You have no connections</h3>
+          <h2>You have no connections</h2>
         </div>
       )
     }
