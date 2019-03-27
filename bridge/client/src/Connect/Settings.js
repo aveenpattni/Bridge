@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route, Link, Switch} from 'react-router-dom';
+import {Route, Link, Switch, withRouter} from 'react-router-dom';
 import Account from './Account';
 import Invite from './Invite';
 import Notif from './Notif';
@@ -17,7 +17,7 @@ class Settings extends Component {
       }
       axios.put(`/connect/settings/account/${this.props.user.email}`, update, config)
         .then(res => {
-          //update the user body;
+          this.props.history.push('/connect/settings');
         })
         .catch(err => {
           console.log(err);
@@ -60,4 +60,4 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+export default withRouter(Settings);

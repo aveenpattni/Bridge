@@ -20,7 +20,7 @@ class ConnectionsUser extends Component {
     let chatid = [this.props.user._id, this.props.rec._id].sort().join("");
     return (
       <div className="CU">
-        <div className="profile connectionProfile">
+        <div className="connectionProfile">
           <div className="CU__card">
             <Link to={`/connect/connections/${chatid}`}>
               <h3>Conversation</h3>

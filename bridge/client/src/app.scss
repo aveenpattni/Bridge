@@ -51,8 +51,10 @@
     }
   }
   @media(min-width: 768px){
+    //padding: 0 $tabletPad;
   }
   @media(min-width: 1440px){
+    //padding: 0 $desktopPad;
   }
 }
 
@@ -146,6 +148,7 @@
     }
   }
   @media(min-width: 768px){
+    width: 30%;
   }
   @media(min-width: 1440px){
   }
@@ -185,6 +188,7 @@
     }
   }
   @media(min-width: 768px){
+    width: 30%;
   }
   @media(min-width: 1440px){
   }
@@ -202,8 +206,8 @@
   display: flex;
   flex-direction: column;
   background: $backBlue;
+  padding: 0 1rem;
   &__hero{
-    margin: 0 1rem;
     img{
       width: 100%;
       height: 100%;
@@ -222,7 +226,7 @@
     }
   }
   &__what{
-    padding: 1rem;
+    padding: 1rem 0;
     h2{
       text-align: center;
     }
@@ -241,7 +245,6 @@
     }
   }
   &__network{
-    margin: 0 1rem;
     img{
       width: 100%;
       height: 100%;
@@ -251,7 +254,7 @@
     }
   }
   &__how{
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -271,6 +274,19 @@
     }
   }
   @media(min-width: 768px){
+    padding: 0 1.5rem;
+    &__hero{
+      padding: 0 $tabletPicPad;
+    }
+    &__network{
+      padding: 0 $tabletPicPad;
+    }
+    &__slogan{
+      display: flex;
+      h2{
+        margin: 0 0.25rem;
+      }
+    }
   }
   @media(min-width: 1440px){
   }
@@ -279,26 +295,26 @@
   display: flex;
   flex-direction: column;
   background: $backBlue;
+  padding: 0 $mobilePad;
   &__title{
     margin-top: 80px;
     align-self: center;
-    padding: 0 1rem;
   }
   &__list{
     padding-bottom: 1rem;
   }
   &__easy{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
   }
   &__targeted{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
   }
   &__instant{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
   }
   &__hero{
     display: flex;
-    margin: 1rem;
+    margin: 1rem 0;
     img{
       width: 100%;
       height: 100%;
@@ -308,6 +324,10 @@
     }
   }
   @media(min-width: 768px){
+    padding: 0 $tabletPad;
+    &__hero{
+      padding: 0 $tabletPicPad;
+    }
   }
   @media(min-width: 1440px){
   }
@@ -316,19 +336,19 @@
   display: flex;
   flex-direction: column;
   background: $backBlue;
+  padding: 0 $mobilePad;
   &__title{
     margin-top: 80px;
     align-self: center;
-    padding: 0 1rem;
   }
   &__story{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
     p{
       margin: 0.5rem 0;
     }
   }
   &__meet{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     &--card{
@@ -340,7 +360,7 @@
     }
   }
   &__contact{
-    padding: 1rem 1rem 0 1rem;
+    padding-top: 1rem;
     &--card{
       margin: 0.5rem 0;
       li{
@@ -350,6 +370,7 @@
     }
   }
   @media(min-width: 768px){
+    padding: 0 $tabletPad;
   }
   @media(min-width: 1440px){
   }
@@ -387,8 +408,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 2;
-  margin: 2rem 1rem;
-  margin-bottom: 0;
+  margin: 2rem 1rem 0 1rem;
   form{
     height: 100%;
     width: 100%;
@@ -452,16 +472,18 @@
   justify-content: center;
   align-items: center;
   flex-grow: 2;
-  margin: 2rem 1rem;
-  margin-bottom: 0;
+  margin-top: 2rem;
+  padding: 0 $mobilePad;
   &__connectImg{
+    display: flex;
     margin-top: 1rem;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 1px solid $dark;
-    border-radius: 4px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid $dark;
+      border-radius: 4px;
+    }
   }
   &__title{
     margin-top: 0.5rem;
@@ -518,6 +540,13 @@
     margin: 1rem;
   }
   @media(min-width: 768px){
+    padding: 0 $tabletPad;
+    &__connectImg{
+      padding: 0 $tabletPicPad;
+    }
+    form{
+      padding: 0 $tabletPicPad;
+    }
   }
   @media(min-width: 1440px){
   }
@@ -542,6 +571,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 2;
+  padding: 0 $mobilePad;
   h3{
     margin: 1rem;
   }
@@ -565,6 +595,11 @@
       background: $primary;
       color: white;
     }
+  }
+  @media(min-width: 768px){
+    padding: 0 $tabletPad;
+  }
+  @media(min-width: 1440px){
   }
 }
 .profileBlock{
@@ -594,7 +629,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem $mobilePad;
   &__pic{
     height: 7rem;
     width: 7rem;
@@ -607,6 +642,11 @@
   }
   &__member{
     width: 100%;
+  }
+  @media(min-width: 768px){
+    padding: 1rem $tabletPicPad;
+  }
+  @media(min-width: 1440px){
   }
 }
 .profile__bio{
@@ -638,7 +678,15 @@
   align-items: center;
   flex-grow: 2;
   margin-top: 1rem;
-  padding: 0 1rem;
+  padding: 0 $mobilePad;
+  @media(min-width: 768px){
+    padding: 0 $tabletPad;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+  @media(min-width: 1440px){
+  }
 }
 .CU{
   padding: 0.5rem 0;
@@ -702,8 +750,10 @@
       }
     }
   }
-  &__fullInfo{
-    
+  @media(min-width: 768px){
+    width: 20rem;
+  }
+  @media(min-width: 1440px){
   }
 }
 .seeLess{
@@ -714,6 +764,25 @@
   border-radius: 4px;
   background: $backWhite;
   position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem $mobilePad;
+  &__pic{
+    height: 7rem;
+    width: 7rem;
+    img{
+      border: 1px solid $dark;
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    } 
+  }
+  &__member{
+    width: 100%;
+  }
 }
 .conversation{
   background: $backWhite;
@@ -721,7 +790,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  // position: relative;
   flex-grow: 2;
   &__header{
     display: flex;
@@ -812,8 +880,14 @@
   justify-content: flex-start;
   align-items: center;
   flex-grow: 2;
+  padding: 0 $mobilePad;
   h3{
     margin: 1rem;
+  }
+  @media(min-width: 768px){
+    padding: 0 $tabletPad;
+  }
+  @media(min-width: 1440px){
   }
 }
 .adduserBlock{
@@ -838,7 +912,7 @@
 }
 .adduser{
   width: 100%;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
   &__card{
     height: auto;
     background: $backWhite;
@@ -891,6 +965,11 @@
         background: $primary;
         color: white;
       }
+  }
+  @media(min-width: 768px){
+    padding: 1rem $tabletPicPad;
+  }
+  @media(min-width: 1440px){
   }
 }
 .adduser__bio{
@@ -957,6 +1036,8 @@
   a{
     text-decoration: none;
     color: $textBlack;
+    width: 100%;
+    max-width: 20rem;
   }
   li{
     list-style-type: none;
@@ -978,6 +1059,19 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+  @media(min-width: 768px){
+    padding: 0 $tabletPad;
+    a{
+      width: 10rem;
+    }
+    &__menu{
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
+  @media(min-width: 1440px){
   }
 }
 .invite{
@@ -1016,14 +1110,34 @@
       color: white;
     }
   }
+  @media(min-width: 768px){
+    padding: 0 $tabletPicPad;
+  }
+  @media(min-width: 1440px){
+  }
 }
 .notif{
   &__title{
     margin: 1rem 0;
   }
+  @media(min-width: 768px){
+    &__title{
+      padding: 0 $tabletPicPad;
+    }
+  }
+  @media(min-width: 1440px){
+  }
 }
 .account{
   width: 100%;
+  @media(min-width: 768px){
+    form{
+      padding: 0 $tabletPicPad;
+    }
+  }
+  @media(min-width: 1440px){
+  }
+  
 }
 .accountFormBlock{
   width: 100%;
@@ -1031,7 +1145,7 @@
   display: flex;
   flex-direction: column;
   h4{
-    max-width: 10rem;
+    max-width: 15rem;
     padding-bottom: 0.25rem;
   }
   p{
@@ -1056,6 +1170,9 @@
   }
   input::placeholder{
     color: $textBlack;
+  }
+  &:focus{
+    border: blue;
   }
 }
 .accountForm{
@@ -1120,6 +1237,19 @@
   input{
     width: 7.5rem;
     margin: 0.25rem;
+  }
+}
+.accountForm__industry{
+  width: 100%;
+  select{
+    width: 100%;
+    text-align: center;
+    flex-grow: 2;
+    background: $white;
+    border: 1px solid $dark;
+    border-radius: 4px;
+    height: 2.5rem;
+    padding: 0.25rem;
   }
 }
 .footer{

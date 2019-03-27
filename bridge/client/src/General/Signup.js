@@ -55,7 +55,9 @@ class Signup extends Component {
     return (
       <div className="signup">
         <h1 className="signup__title">Sign Up for Bridge</h1>
-        <img className="signup__connectImg" src="./Assets/Images/connect.jpeg" alt="Connect" />
+        <div className="signup__connectImg">
+          <img src="./Assets/Images/connect.jpeg" alt="Connect" />
+        </div>
         <form ref={this.signupForm} onSubmit={this.submitSignup}>
           <label className="signup__type select">
             <h3>Profile Type:</h3>

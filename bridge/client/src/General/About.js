@@ -7,8 +7,8 @@ export default class About extends Component {
     return (
       <div className="about">
         <div className="about__slogan">
-          <h2>Creating Connections</h2>
-          <h2>Creating Networks</h2>
+          <h2>Creating Connections.</h2>
+          <h2>Creating Networks.</h2>
         </div>
         <div className="about__hero">
           <img src='./Assets/Images/handshake2.jpg' alt="Hero" />
