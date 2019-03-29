@@ -15,7 +15,7 @@ class App extends Component {
     isLoggedIn: false,
     loginFail: false
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log("Created by Aveen Pattni");
     this.authenticate();
   }
@@ -102,7 +102,7 @@ class App extends Component {
             <Route path="/about" render={() => { return <About /> }} />
             <Route path="/features" component={Features} />
             <Route path="/contact" component={Contact} />
-            <Route path="/login" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} fail={this.state.loginFail}/> }} />
+            <Route path="/login" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} fail={this.state.loginFail} /> }} />
             <Route path="/signup" render={(props) => { return <Bridge sendLogin={this.sendLogin} {...props} /> }} />
             <Route path="/" render={() => { return <Redirect to="/login" /> }} />
           </Switch>

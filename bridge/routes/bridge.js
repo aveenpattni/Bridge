@@ -45,7 +45,7 @@ router.get("/addlist/:email", async (req, res) => {
   });
   //This is where the matching algorithm takes place
   let scoreList = [];
-  for (let item of foundItems){
+  for (let item of foundItems) {
     item = item.toObject();
     item.score = score(user, item)
     scoreList.push(item);
@@ -58,31 +58,31 @@ router.get("/addlist/:email", async (req, res) => {
 
 router.put("/adduser/:email", async (req, res) => {
   //Add connection to Mentor document
-  let query = {email: req.body.mentor};
+  let query = { email: req.body.mentor };
   let update = {
-    $push: { connections: req.body.student}
+    $push: { connections: req.body.student }
   }
   let newMentorConnection = await User.findOneAndUpdate(
-    query, update, { new:true, runValidators:true });
+    query, update, { new: true, runValidators: true });
   //Add connection to Student document
-  query = {email: req.body.student};
+  query = { email: req.body.student };
   update = {
-    $push: { connections: req.body.mentor}
+    $push: { connections: req.body.mentor }
   }
   let newStudentConnection = await User.findOneAndUpdate(
-    query, update, { new:true, runValidators:true });
+    query, update, { new: true, runValidators: true });
   //Create Activity for Mentor
   let newMentorActivity = new Activity({
     email: req.body.mentor,
     type: "connection",
-    body: `You are now connected with ${req.body.student}.` 
+    body: `You are now connected with ${req.body.student}.`
   });
   newMentorActivity.save();
   //Create Activity for Student
   let newStudentActivity = new Activity({
     email: req.body.student,
     type: "connection",
-    body: `You are now connected with ${req.body.mentor}.` 
+    body: `You are now connected with ${req.body.mentor}.`
   });
   newStudentActivity.save();
   res.json(req.body);
@@ -90,33 +90,33 @@ router.put("/adduser/:email", async (req, res) => {
 
 router.put("/delete/:email", async (req, res) => {
   //Remove connection to Mentor document
-  let query = {email: req.body.mentor};
+  let query = { email: req.body.mentor };
   let update = {
-    $pull: { connections: req.body.student},
+    $pull: { connections: req.body.student },
     // $push: { pastConnections: req.body.student}
   }
   let newMentorConnection = await User.findOneAndUpdate(
-    query, update, { new:true, runValidators:true });
+    query, update, { new: true, runValidators: true });
   //Remove connection to Student document
-  query = {email: req.body.student};
+  query = { email: req.body.student };
   update = {
-    $pull: { connections: req.body.mentor},
+    $pull: { connections: req.body.mentor },
     // $push: { pastConnections: req.body.mentor}
   }
   let newStudentConnection = await User.findOneAndUpdate(
-    query, update, { new:true, runValidators:true });
+    query, update, { new: true, runValidators: true });
   //Create Activity for Mentor
   let newMentorActivity = new Activity({
     email: req.body.mentor,
     type: "termination",
-    body: `Your connection with ${req.body.student} has been terminated.` 
+    body: `Your connection with ${req.body.student} has been terminated.`
   });
   newMentorActivity.save();
   //Create Activity for Student
   let newStudentActivity = new Activity({
     email: req.body.student,
     type: "termination",
-    body: `Your connection with ${req.body.mentor} has been terminated.` 
+    body: `Your connection with ${req.body.mentor} has been terminated.`
   });
   newStudentActivity.save();
   res.json(req.body);
@@ -125,17 +125,17 @@ router.put("/delete/:email", async (req, res) => {
 router.get("/activity/:email", async (req, res) => {
   let foundItems = await Activity.find({
     email: req.params.email
-  }).sort({dateCreated: -1})
+  }).sort({ dateCreated: -1 })
   res.json(foundItems);
 });
 
-router.put("/settings/account/:email", async(req, res) =>{
+router.put("/settings/account/:email", async (req, res) => {
   //Update User information
-  let query = {email: req.params.email};
+  let query = { email: req.params.email };
   let update = req.body;
-  let options = {new:true, runValidators:true};
+  let options = { new: true, runValidators: true };
   let updatedUser = await User.findOneAndUpdate(
-    query,update,options);
+    query, update, options);
   //Create Activity
   let newActivity = new Activity({
     email: req.params.email,
